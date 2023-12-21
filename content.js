@@ -1,11 +1,17 @@
-function scrapeArticleData() {
-    // Logic to scrape the article data goes here
-    // For example, document.querySelector to get article elements
+console.log('content.js loaded')
+
+records = document.getElementsByClassName("publish_record_index")
+if (records.length === 0) {
+    records = document.getElementsByClassName("publish_record_history")
 }
 
-// When ready, send the article data to the background script
-chrome.runtime.sendMessage({
-    action: "downloadArticle",
-    url: articleUrl,
-    filename: "article.pdf" // Or another format as needed
-});
+var article_data = []
+const articles = records[0].getElementsByClassName("weui-desktop-mass-appmsg__title")
+for (const article of articles) {
+    url = article.getAttribute('href')
+    title = article.getElementsByTagName('span')[0].innerText
+    article_data.push({title: title, url: url})
+}
+chrome.storage.local.set({ articles: article_data }, function() {
+    console.log("Articles are saved in storage.");
+})

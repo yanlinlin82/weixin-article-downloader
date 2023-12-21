@@ -1,17 +1,42 @@
 <!doctype html>
 <html>
-  <head>
-    <title>WeChat Article Downloader</title>
-    <style>
-      body {
-        min-width: 357px;
-        min-height: 500px;
-        overflow-x: hidden;
-      }
-    </style>
-  </head>
-  <body>
-    <button id="downloadButton">Download Article</button>
-    <script src="popup.js"></script>
-  </body>
+
+<head>
+  <title>微信公众号文章下载工具</title>
+  <style>
+    body {
+      min-width: 357px;
+      min-height: 200px;
+      overflow-x: hidden;
+    }
+    articles-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+    .article-item {
+      padding: 5px;
+      border: 1px solid darkgray;
+      background: lightyellow;
+    }
+    .button-section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="articles-container" class="articles-container">
+  </div>
+  <div class="button-section">
+    <button id="downloadButton">下载文章</button>
+  </div>
+  <script src="popup.js"></script>
+</body>
+
 </html>
